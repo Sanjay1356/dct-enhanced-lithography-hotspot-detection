@@ -1,0 +1,29 @@
+benchmark: B1
+
+data:
+  root: /Users/sanjaya/Downloads/iccad-official
+  input_size: [224, 224]
+  channels: 3
+  rescale: 0.00392156862745098
+
+split:
+  type: stratified
+  train_fraction: 0.8
+  validation_fraction: 0.2
+  seed: 42
+
+training:
+  optimizer: nadam
+  loss: binary_crossentropy
+  batch_size: 32
+  epochs: 5
+  shuffle_train: true
+  shuffle_validation: false
+
+model:
+  name: baseline_cnn
+  parameters: 12873
+
+evaluation:
+  threshold: 0.5
+  metric: balanced_accuracy
